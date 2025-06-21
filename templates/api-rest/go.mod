@@ -1,11 +1,11 @@
-module {{.ModuleName}}
+module "{{.ModuleName}}"
 
-go 1.21
+go 1.24.4
 
 require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/joho/godotenv v1.5.1
-	github.com/sirupsen/logrus v1.9.3
+	github.com/rafa-mori/logz v1.3.0
 	{{- if .DatabaseType}}
 	{{- if eq .DatabaseType "postgres"}}
 	github.com/lib/pq v1.10.9

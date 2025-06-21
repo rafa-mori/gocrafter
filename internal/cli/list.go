@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 
 	"github.com/rafa-mori/gocrafter/internal/generator"
+	gl "github.com/rafa-mori/gocrafter/logger"
 	"github.com/spf13/cobra"
 )
 
@@ -29,8 +30,7 @@ func ListCommand() *cobra.Command {
 }
 
 func runListCommand() error {
-	fmt.Println("🎯 Available Project Templates:")
-	fmt.Println()
+	gl.Log("info", "🎯 Available Project Templates:")
 
 	templates := generator.SupportedTemplates()
 	templateDescriptions := map[string]string{
@@ -91,22 +91,20 @@ func runListCommand() error {
 		desc := templateDescriptions[tmpl]
 		features := templateFeatures[tmpl]
 
-		fmt.Printf("📦 %s\n", tmpl)
-		fmt.Printf("   %s\n", desc)
+		gl.Log("info", fmt.Sprintf("📦 %s\n", tmpl))
+		gl.Log("info", fmt.Sprintf("   %s\n", desc))
 
 		if len(features) > 0 {
-			fmt.Println("   Features:")
+			gl.Log("info", "   Features:")
 			for _, feature := range features {
-				fmt.Printf("   • %s\n", feature)
+				gl.Log("info", fmt.Sprintf("   • %s\n", feature))
 			}
 		}
-
-		fmt.Println()
 	}
 
-	fmt.Println("💡 Usage:")
-	fmt.Println("   gocrafter new --template <template-name>")
-	fmt.Println("   gocrafter new  # Interactive mode")
+	gl.Log("info", fmt.Sprintf("💡 Usage:"))
+	gl.Log("info", fmt.Sprintf("   gocrafter new --template <template-name>"))
+	gl.Log("info", fmt.Sprintf("   gocrafter new  # Interactive mode"))
 
 	return nil
 }
@@ -120,7 +118,7 @@ func InfoCommand() *cobra.Command {
 		Example: `  # Show info about api-rest template
   gocrafter info api-rest
 
-  # Show info about cli-tool template  
+  # Show info about cli-tool template
   gocrafter info cli-tool`,
 		Args: cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -159,35 +157,35 @@ func runInfoCommand(templateName string) error {
 	}
 
 	// Display template information
-	fmt.Printf("📦 Template: %s\n", info.Name)
-	fmt.Printf("📝 Description: %s\n", info.Description)
-	fmt.Printf("🏷️  Version: %s\n", info.Version)
+	gl.Log("info", fmt.Sprintf("📦 Template: %s\n", info.Name))
+	gl.Log("info", fmt.Sprintf("📝 Description: %s\n", info.Description))
+	gl.Log("info", fmt.Sprintf("🏷️  Version: %s\n", info.Version))
 
 	if info.Author != "" {
-		fmt.Printf("👤 Author: %s\n", info.Author)
+		gl.Log("info", fmt.Sprintf("👤 Author: %s\n", info.Author))
 	}
 
 	if len(info.Tags) > 0 {
-		fmt.Printf("🏷️  Tags: %s\n", joinStrings(info.Tags, ", "))
+		gl.Log("info", fmt.Sprintf("🏷️  Tags: %s\n", joinStrings(info.Tags, ", ")))
 	}
 
 	if len(info.Features) > 0 {
-		fmt.Println("\n✨ Features:")
+		gl.Log("info", "\n✨ Features:")
 		for _, feature := range info.Features {
-			fmt.Printf("   • %s\n", feature)
+			gl.Log("info", fmt.Sprintf("   • %s\n", feature))
 		}
 	}
 
 	// Show template structure
-	fmt.Println("\n📁 Template Structure:")
+	gl.Log("info", "\n📁 Template Structure:")
 	templatePath := filepath.Join(templatesPath, templateName)
 	if err := showTemplateStructure(templatePath, ""); err != nil {
-		fmt.Printf("   (Unable to show structure: %s)\n", err)
+		gl.Log("info", fmt.Sprintf("   (Unable to show structure: %s)\n", err))
 	}
 
-	fmt.Println("\n💡 Usage:")
-	fmt.Printf("   gocrafter new --template %s\n", templateName)
-	fmt.Printf("   gocrafter new my-project --template %s\n", templateName)
+	gl.Log("info", "\n💡 Usage:")
+	gl.Log("info", fmt.Sprintf("   gocrafter new --template %s\n", templateName))
+	gl.Log("info", fmt.Sprintf("   gocrafter new my-project --template %s\n", templateName))
 
 	return nil
 }
@@ -195,7 +193,7 @@ func runInfoCommand(templateName string) error {
 func showTemplateStructure(templatePath, indent string) error {
 	// This would walk through the template directory and show its structure
 	// For now, we'll show a placeholder
-	fmt.Printf("%s   (Template structure will be shown here)\n", indent)
+	gl.Log("info", fmt.Sprintf("%s   (Template structure will be shown here)\n", indent))
 	return nil
 }
 

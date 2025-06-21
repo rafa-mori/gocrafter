@@ -7,6 +7,7 @@ import (
 
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/rafa-mori/gocrafter/internal/generator"
+	gl "github.com/rafa-mori/gocrafter/logger"
 )
 
 // InteractivePrompt handles interactive configuration prompts
@@ -23,9 +24,11 @@ func NewInteractivePrompt() *InteractivePrompt {
 
 // Run executes the interactive prompt flow
 func (p *InteractivePrompt) Run() (*generator.ProjectConfig, error) {
-	fmt.Println("🚀 Welcome to GoCrafter - Go Project Generator!")
-	fmt.Println("Let's craft your perfect Go project together...")
-	fmt.Println()
+	gl.Log("info", "Starting interactive project setup")
+	// Print welcome message
+	// This is a placeholder for the logger, replace with actual logger if needed
+	gl.Log("info", "🚀 Welcome to GoCrafter - Go Project Generator!")
+	gl.Log("info", "Let's craft your perfect Go project together...")
 
 	// Project basic info
 	if err := p.promptProjectInfo(); err != nil {
@@ -264,26 +267,27 @@ func (p *InteractivePrompt) promptDevOps() error {
 }
 
 func (p *InteractivePrompt) confirmConfiguration() error {
-	fmt.Println("\n📋 Project Configuration Summary:")
-	fmt.Printf("  Name: %s\n", p.config.Name)
-	fmt.Printf("  Module: %s\n", p.config.Module)
-	fmt.Printf("  Template: %s\n", p.config.Template)
+	// Print summary of the configuration
+	gl.Log("info", "📋 Project Configuration Summary:")
+	gl.Log("info", "  Name: %s\n", p.config.Name)
+	gl.Log("info", "  Module: %s\n", p.config.Module)
+	gl.Log("info", "  Template: %s\n", p.config.Template)
 	if p.config.Database != "" {
-		fmt.Printf("  Database: %s\n", p.config.Database)
+		gl.Log("info", fmt.Sprintf("  Database: %s\n", p.config.Database))
 	}
 	if p.config.Cache != "" {
-		fmt.Printf("  Cache: %s\n", p.config.Cache)
+		gl.Log("info", fmt.Sprintf("  Cache: %s\n", p.config.Cache))
 	}
 	if len(p.config.Features) > 0 {
-		fmt.Printf("  Features: %s\n", strings.Join(p.config.Features, ", "))
+		gl.Log("info", fmt.Sprintf("  Features: %s\n", strings.Join(p.config.Features, ", ")))
 	}
-	fmt.Printf("  Docker: %t\n", p.config.Docker)
-	fmt.Printf("  Kubernetes: %t\n", p.config.Kubernetes)
+	gl.Log("info", fmt.Sprintf("  Docker: %t\n", p.config.Docker))
+	gl.Log("info", fmt.Sprintf("  Kubernetes: %t\n", p.config.Kubernetes))
 	if p.config.CI != "" {
-		fmt.Printf("  CI/CD: %s\n", p.config.CI)
+		gl.Log("info", fmt.Sprintf("  CI/CD: %s\n", p.config.CI))
 	}
 
-	fmt.Printf("  Output Directory: %s\n", filepath.Join(".", p.config.Name))
+	gl.Log("info", fmt.Sprintf("  Output Directory: %s\n", filepath.Join(".", p.config.Name)))
 
 	var confirm bool
 	confirmPrompt := &survey.Confirm{

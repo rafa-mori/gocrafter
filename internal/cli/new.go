@@ -7,7 +7,7 @@ import (
 
 	"github.com/rafa-mori/gocrafter/internal/generator"
 	"github.com/rafa-mori/gocrafter/internal/prompt"
-	"github.com/rafa-mori/logz"
+	gl "github.com/rafa-mori/gocrafter/logger"
 	"github.com/spf13/cobra"
 )
 
@@ -56,14 +56,14 @@ func runNewCommand(args []string, template, outputDir, configFile string, quick 
 
 	// Load from config file if provided
 	if configFile != "" {
-		logz.Info("Loading configuration from file", "file", configFile)
+		gl.Log("info", fmt.Sprintf("Loading configuration from file: %s", configFile))
 		// TODO: Implement config file loading
 		return fmt.Errorf("config file loading not yet implemented")
 	}
 
 	// Quick mode
 	if quick && template != "" {
-		logz.Info("Running in quick mode", "template", template)
+		gl.Log("info", fmt.Sprintf("Running in quick mode with template: %s", template))
 		config, err = prompt.QuickPrompt(template)
 		if err != nil {
 			return fmt.Errorf("quick prompt failed: %w", err)
@@ -76,7 +76,7 @@ func runNewCommand(args []string, template, outputDir, configFile string, quick 
 		config.Module = fmt.Sprintf("github.com/user/%s", args[0]) // Default module name
 	} else {
 		// Interactive mode
-		logz.Info("Running interactive mode")
+		gl.Log("info", "Running interactive mode")
 		prompter := prompt.NewInteractivePrompt()
 		config, err = prompter.Run()
 		if err != nil {
@@ -107,13 +107,13 @@ func runNewCommand(args []string, template, outputDir, configFile string, quick 
 	}
 
 	// Success message
-	fmt.Println("✅ Project generated successfully!")
-	fmt.Printf("📁 Location: %s\n", config.GetOutputPath())
-	fmt.Println("\nNext steps:")
-	fmt.Printf("  cd %s\n", config.Name)
-	fmt.Println("  make run    # Start the application")
-	fmt.Println("  make test   # Run tests")
-	fmt.Println("  make build  # Build the application")
+	gl.Log("info", fmt.Sprintf("✅ Project generated successfully!"))
+	gl.Log("info", fmt.Sprintf("📁 Location: %s", config.GetOutputPath()))
+	gl.Log("info", fmt.Sprintf("Next steps:"))
+	gl.Log("info", fmt.Sprintf("  cd %s", config.Name))
+	gl.Log("info", fmt.Sprintf("  make run    # Start the application"))
+	gl.Log("info", fmt.Sprintf("  make test   # Run tests"))
+	gl.Log("info", fmt.Sprintf("  make build  # Build the application"))
 
 	return nil
 }

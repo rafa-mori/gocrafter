@@ -20,7 +20,7 @@ import (
 	{{- end}}
 
 	"github.com/gin-gonic/gin"
-	"github.com/sirupsen/logrus"
+	gl "github.com/rafa-mori/gocrafter/logger"
 	{{- if hasFeature "API Documentation"}}
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -61,7 +61,7 @@ func main() {
 	// Initialize database
 	db, err := database.Initialize(cfg)
 	if err != nil {
-		logrus.Fatalf("Failed to initialize database: %v", err)
+		gl.Log("fatal", "Failed to initialize database: %v", err)
 	}
 	defer database.Close(db)
 	{{- end}}
@@ -70,7 +70,7 @@ func main() {
 	// Initialize cache
 	cacheClient, err := cache.Initialize(cfg)
 	if err != nil {
-		logrus.Fatalf("Failed to initialize cache: %v", err)
+		gl.Log("fatal", "Failed to initialize cache: %v", err)
 	}
 	defer cache.Close(cacheClient)
 	{{- end}}
@@ -100,9 +100,9 @@ func main() {
 
 	// Start server in a goroutine
 	go func() {
-		logrus.Infof("Starting server on port %s", cfg.Port)
+		gl.Log("info", "Starting server on port %s", cfg.Port)
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			logrus.Fatalf("Failed to start server: %v", err)
+			gl.Log("fatal", "Failed to start server: %v", err)
 		}
 	}()
 
@@ -111,17 +111,17 @@ func main() {
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
 
-	logrus.Info("Shutting down server...")
+	gl.Log("info", "Shutting down server...")
 
 	// Give the server 30 seconds to finish handling requests
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 
 	if err := srv.Shutdown(ctx); err != nil {
-		logrus.Fatalf("Server forced to shutdown: %v", err)
+		gl.Log("fatal", "Server forced to shutdown: %v", err)
 	}
 
-	logrus.Info("Server stopped")
+	gl.Log("info", "Server stopped")
 }
 
 func setupRouter(deps *handler.Dependencies) *gin.Engine {
@@ -163,17 +163,7 @@ func setupRouter(deps *handler.Dependencies) *gin.Engine {
 }
 
 func setupLogger(cfg *config.Config) {
-	level, err := logrus.ParseLevel(cfg.LogLevel)
-	if err != nil {
-		level = logrus.InfoLevel
-	}
-
-	logrus.SetLevel(level)
-	logrus.SetFormatter(&logrus.JSONFormatter{})
-
 	if cfg.Environment == "development" {
-		logrus.SetFormatter(&logrus.TextFormatter{
-			FullTimestamp: true,
-		})
+		gl.SetDebug(true)
 	}
 }

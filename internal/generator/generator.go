@@ -9,7 +9,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/rafa-mori/logz"
+	gl "github.com/rafa-mori/gocrafter/logger"
 )
 
 // Generator handles project generation from templates
@@ -30,7 +30,7 @@ func NewGenerator(config *ProjectConfig, templatesPath string) *Generator {
 
 // Generate creates a new project based on the configuration
 func (g *Generator) Generate() error {
-	logz.Info("Starting project generation", "project", g.config.Name, "template", g.config.Template)
+	gl.Log("Info", fmt.Sprintf("Starting project generation: %s (Template: %s)", g.config.Name, g.config.Template))
 
 	// Validate configuration
 	if err := g.config.Validate(); err != nil {
@@ -56,10 +56,10 @@ func (g *Generator) Generate() error {
 
 	// Post-generation tasks
 	if err := g.runPostGeneration(outputPath); err != nil {
-		logz.Warn("Post-generation tasks failed", "error", err)
+		gl.Log("warn", fmt.Sprintf("Post-generation tasks failed: %v", err))
 	}
 
-	logz.Info("Project generated successfully", "path", outputPath)
+	gl.Log("info", fmt.Sprintf("Project generated successfully: %s", outputPath))
 	return nil
 }
 
@@ -207,7 +207,7 @@ func (g *Generator) processTemplate(content string) (string, error) {
 }
 
 func (g *Generator) runPostGeneration(outputPath string) error {
-	logz.Info("Running post-generation tasks", "path", outputPath)
+	gl.Log("info", fmt.Sprintf("Running post-generation tasks: %s", outputPath))
 
 	// Initialize Go module
 	if err := g.initGoModule(outputPath); err != nil {
@@ -235,23 +235,23 @@ func (g *Generator) initGoModule(outputPath string) error {
 	// Check if go.mod already exists
 	goModPath := filepath.Join(outputPath, "go.mod")
 	if _, err := os.Stat(goModPath); err == nil {
-		logz.Info("go.mod already exists, skipping module initialization")
+		gl.Log("info", "go.mod already exists, skipping module initialization")
 		return nil
 	}
 
-	logz.Info("Initializing Go module", "module", g.config.Module)
+	gl.Log("info", fmt.Sprintf("Initializing Go module: %s", g.config.Module))
 	return nil // go mod init will be handled by the template
 }
 
 func (g *Generator) runGoModTidy(outputPath string) error {
-	logz.Info("Running go mod tidy")
+	gl.Log("info", fmt.Sprintf("Running go mod tidy: %s", outputPath))
 	// This would execute: go mod tidy in the output directory
 	// For now, we'll leave this as a placeholder since we want to generate templates first
 	return nil
 }
 
 func (g *Generator) formatGoCode(outputPath string) error {
-	logz.Info("Formatting Go code")
+	gl.Log("info", fmt.Sprintf("Formatting Go code: %s", outputPath))
 	// This would execute: gofmt -w . in the output directory
 	// For now, we'll leave this as a placeholder
 	return nil

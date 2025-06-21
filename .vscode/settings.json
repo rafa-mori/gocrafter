@@ -21,15 +21,14 @@
     "go.coverOnTestPackage": true,
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true
+        "source.organizeImports": "explicit"
     },
     "files.exclude": {
         "**/.git": true,
         "**/.DS_Store": true,
         "**/coverage.out": true,
         "**/coverage.html": true,
-        "**/dist": true,
-        "**/gocrafter": true
+        "**/dist": true
     },
     "go.generateTestsFlags": [
         "-all",
