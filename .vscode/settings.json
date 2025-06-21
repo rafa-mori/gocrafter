@@ -1,0 +1,44 @@
+{
+    "go.lintTool": "golangci-lint",
+    "go.lintFlags": [
+        "--fast"
+    ],
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
+    "go.toolsEnvVars": {
+        "CGO_ENABLED": "0"
+    },
+    "go.testFlags": [
+        "-race",
+        "-v"
+    ],
+    "go.buildFlags": [
+        "-race"
+    ],
+    "go.testTimeout": "30s",
+    "go.coverOnSave": true,
+    "go.coverOnSingleTest": true,
+    "go.coverOnTestPackage": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/coverage.out": true,
+        "**/coverage.html": true,
+        "**/dist": true,
+        "**/gocrafter": true
+    },
+    "go.generateTestsFlags": [
+        "-all",
+        "-exported"
+    ],
+    "go.addTags": {
+        "tags": "json",
+        "options": "json=omitempty",
+        "promptForTags": false,
+        "transform": "camelcase"
+    }
+}
