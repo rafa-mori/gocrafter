@@ -1,4 +1,4 @@
-module github.com/rafa-mori/goforge
+module github.com/rafa-mori/gocrafter
 
 go 1.24.4
 

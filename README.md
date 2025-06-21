@@ -1,17 +1,17 @@
-![GoForge](docs/assets/top_banner_m_a.png)
+![GoCrafter](docs/assets/top_banner_m_a.png)
 
 
 
-[![Build](https://github.com/rafa-mori/goforge/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/goforge/actions/workflows/release.yml)
+[![Build](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Go Version](https://img.shields.io/badge/go-%3E=1.20-blue)](go.mod)
-[![Releases](https://img.shields.io/github/v/release/faelmori/goforge?include_prereleases)](https://github.com/rafa-mori/goforge/releases)
+[![Releases](https://img.shields.io/github/v/release/faelmori/gocrafter?include_prereleases)](https://github.com/rafa-mori/gocrafter/releases)
 
 ---
 
 [🇧🇷 Read this documentation in Portuguese](docs/README.pt-BR.md)
 
-If you’re tired of manual builds, complicated deploys, confusing versioning, and want a stylish, easy-to-extend, production-ready CLI, **GoForge** is for you!
+If you’re tired of manual builds, complicated deploys, confusing versioning, and want a stylish, easy-to-extend, production-ready CLI, **GoCrafter** is for you!
 
 ---
 
@@ -51,7 +51,7 @@ rootCmd.AddCommand(cli.HelloCmd)
 ### 2. Advanced logger with extra context
 
 ```go
-import gl "github.com/rafa-mori/goforge/logger"
+import gl "github.com/rafa-mori/gocrafter/logger"
 
 func exampleWithContext() {
     gl.Log("warn", "Warning! Something might be wrong.")
@@ -68,23 +68,23 @@ func exampleWithContext() {
 ### 3. Using as a Go library
 
 ```go
-import "github.com/rafa-mori/goforge"
+import "github.com/rafa-mori/gocrafter"
 
 func main() {
-    var myModule goforge.GoForge = &MyModule{}
+    var myModule gocrafter.GoCrafter = &MyModule{}
     if myModule.Active() {
         _ = myModule.Execute()
     }
 }
 
-// Implement the GoForge interface in your module
+// Implement the GoCrafter interface in your module
 ```
 
 ---
 
-## ✨ What is GoForge?
+## ✨ What is GoCrafter?
 
-GoForge is a template/base project for any modern Go module. It delivers:
+GoCrafter is a template/base project for any modern Go module. It delivers:
 
 - **Multi-platform build** (Linux, macOS, Windows) with no code changes
 - **Automatic UPX compression** for optimized binaries
@@ -105,7 +105,7 @@ All this without changing your module’s code. The workflow is modular, dynamic
 ```plain text
 ./
 ├── .github/workflows/      # CI/CD workflows (release, checksum)
-├── article.go              # GoForge interface for library use
+├── article.go              # GoCrafter interface for library use
 ├── cmd/                    # CLI entrypoint and commands
 │   ├── cli/                # Utilities and example commands
 │   ├── main.go             # CLI application main
@@ -150,7 +150,7 @@ make build
 ### 3. Run the CLI
 
 ```sh
-./goforge --help
+./gocrafter --help
 ```
 
 ### 4. Add custom commands
@@ -162,7 +162,7 @@ Create files in `cmd/cli/` and register them in `wrpr.go`.
 ## 🛠️ Logger usage example
 
 ```go
-import gl "github.com/rafa-mori/goforge/logger"
+import gl "github.com/rafa-mori/gocrafter/logger"
 
 gl.Log("info", "Informative message")
 gl.Log("error", "Something went wrong!")
@@ -174,7 +174,7 @@ The logger automatically includes context (line, file, function)!
 
 ## 🔄 Automatic versioning
 
-The `version/CLI_VERSION` file is filled by CI/CD on every release/tag. The `goforge version` command shows the current and latest version from GitHub.
+The `version/CLI_VERSION` file is filled by CI/CD on every release/tag. The `gocrafter version` command shows the current and latest version from GitHub.
 
 ---
 
@@ -198,7 +198,7 @@ Rafael Mori — [@faelmori](https://github.com/rafa-mori)
 
 ## 🌐 Links
 
-- [GitHub Repository](https://github.com/rafa-mori/goforge)
+- [GitHub Repository](https://github.com/rafa-mori/gocrafter)
 - [Logger usage example](logger/logger.go)
 - [CI/CD Workflows](.github/workflows/)
 

@@ -3,10 +3,10 @@ package article
 import "github.com/spf13/cobra"
 
 // This file/package allows the article module to be used as a library.
-// It defines the GoForge interface which can be implemented by any module
+// It defines the GoCrafter interface which can be implemented by any module
 // that wants to be part of the article ecosystem.
 
-type GoForge interface {
+type GoCrafter interface {
 	// Alias returns the alias for the command.
 	Alias() string
 	// ShortDescription returns a brief description of the command.

@@ -1,48 +1,48 @@
 package main
 
 import (
-	cc "github.com/rafa-mori/goforge/cmd/cli"
-	gl "github.com/rafa-mori/goforge/logger"
-	vs "github.com/rafa-mori/goforge/version"
+	cc "github.com/rafa-mori/gocrafter/cmd/cli"
+	gl "github.com/rafa-mori/gocrafter/logger"
+	vs "github.com/rafa-mori/gocrafter/version"
 	"github.com/spf13/cobra"
 
 	"os"
 	"strings"
 )
 
-type GoForge struct {
+type GoCrafter struct {
 	parentCmdName string
 	printBanner   bool
 }
 
-func (m *GoForge) Alias() string {
+func (m *GoCrafter) Alias() string {
 	return ""
 }
-func (m *GoForge) ShortDescription() string {
-	return "GoForge is a minimalistic backend service with Go."
+func (m *GoCrafter) ShortDescription() string {
+	return "GoCrafter is a minimalistic backend service with Go."
 }
-func (m *GoForge) LongDescription() string {
-	return `GoForge: A minimalistic backend service with Go.`
+func (m *GoCrafter) LongDescription() string {
+	return `GoCrafter: A minimalistic backend service with Go.`
 }
-func (m *GoForge) Usage() string {
+func (m *GoCrafter) Usage() string {
 	return "article [command] [args]"
 }
-func (m *GoForge) Examples() []string {
+func (m *GoCrafter) Examples() []string {
 	return []string{"article some-command",
 		"article another-command --option value",
 		"article yet-another-command --flag"}
 }
-func (m *GoForge) Active() bool {
+func (m *GoCrafter) Active() bool {
 	return true
 }
-func (m *GoForge) Module() string {
+func (m *GoCrafter) Module() string {
 	return "article"
 }
-func (m *GoForge) Execute() error {
+func (m *GoCrafter) Execute() error {
 	return m.Command().Execute()
 }
-func (m *GoForge) Command() *cobra.Command {
-	gl.Log("debug", "Starting GoForge CLI...")
+func (m *GoCrafter) Command() *cobra.Command {
+	gl.Log("debug", "Starting GoCrafter CLI...")
 
 	var rtCmd = &cobra.Command{
 		Use:     m.Module(),
@@ -71,10 +71,10 @@ func (m *GoForge) Command() *cobra.Command {
 
 	return rtCmd
 }
-func (m *GoForge) SetParentCmdName(rtCmd string) {
+func (m *GoCrafter) SetParentCmdName(rtCmd string) {
 	m.parentCmdName = rtCmd
 }
-func (m *GoForge) concatenateExamples() string {
+func (m *GoCrafter) concatenateExamples() string {
 	examples := ""
 	rtCmd := m.parentCmdName
 	if rtCmd != "" {
@@ -85,13 +85,13 @@ func (m *GoForge) concatenateExamples() string {
 	}
 	return examples
 }
-func RegX() *GoForge {
+func RegX() *GoCrafter {
 	var printBannerV = os.Getenv("GOFORGE_PRINT_BANNER")
 	if printBannerV == "" {
 		printBannerV = "true"
 	}
 
-	return &GoForge{
+	return &GoCrafter{
 		printBanner: strings.ToLower(printBannerV) == "true",
 	}
 }

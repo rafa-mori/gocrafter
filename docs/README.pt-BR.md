@@ -1,11 +1,11 @@
-# 🚀 GoForge: Automação, CLI Moderna e Estrutura Profissional para Módulos Go
+# 🚀 GoCrafter: Automação, CLI Moderna e Estrutura Profissional para Módulos Go
 
-[![Build](https://github.com/rafa-mori/goforge/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/goforge/actions/workflows/release.yml)
+[![Build](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Go Version](https://img.shields.io/badge/go-%3E=1.20-blue)](go.mod)
-[![Releases](https://img.shields.io/github/v/release/faelmori/goforge?include_prereleases)](https://github.com/rafa-mori/goforge/releases)
+[![Releases](https://img.shields.io/github/v/release/faelmori/gocrafter?include_prereleases)](https://github.com/rafa-mori/gocrafter/releases)
 
-Se você já cansou de builds manuais, deploys complicados, versionamento confuso e quer uma CLI estilosa, fácil de estender e pronta para produção, o **GoForge** é pra você!
+Se você já cansou de builds manuais, deploys complicados, versionamento confuso e quer uma CLI estilosa, fácil de estender e pronta para produção, o **GoCrafter** é pra você!
 
 ---
 
@@ -45,7 +45,7 @@ rootCmd.AddCommand(cli.HelloCmd)
 ### 2. Logger avançado com contexto extra
 
 ```go
-import gl "github.com/rafa-mori/goforge/logger"
+import gl "github.com/rafa-mori/gocrafter/logger"
 
 func exemploComContexto() {
     gl.Log("warn", "Atenção! Algo pode estar errado.")
@@ -62,23 +62,23 @@ func exemploComContexto() {
 ### 3. Usando como biblioteca Go
 
 ```go
-import "github.com/rafa-mori/goforge"
+import "github.com/rafa-mori/gocrafter"
 
 func main() {
-    var myModule goforge.GoForge = &MeuModulo{}
+    var myModule gocrafter.GoCrafter = &MeuModulo{}
     if myModule.Active() {
         _ = myModule.Execute()
     }
 }
 
-// Implemente a interface GoForge no seu módulo
+// Implemente a interface GoCrafter no seu módulo
 ```
 
 ---
 
-## ✨ O que é o GoForge?
+## ✨ O que é o GoCrafter?
 
-O GoForge é um template/projeto base para qualquer módulo Go moderno. Ele entrega:
+O GoCrafter é um template/projeto base para qualquer módulo Go moderno. Ele entrega:
 
 - **Build multi-plataforma** (Linux, macOS, Windows) sem mexer no código
 - **Compactação UPX** automática para binários otimizados
@@ -99,7 +99,7 @@ Tudo isso sem precisar alterar o código do seu módulo individualmente. O workf
 ```plain text
 ./
 ├── .github/workflows/      # Workflows de CI/CD (release, checksum)
-├── article.go              # Interface GoForge para uso como lib
+├── article.go              # Interface GoCrafter para uso como lib
 ├── cmd/                    # Entrypoint e comandos da CLI
 │   ├── cli/                # Utilitários e comandos de exemplo
 │   ├── main.go             # Main da aplicação CLI
@@ -144,7 +144,7 @@ make build
 ### 3. Rode a CLI
 
 ```sh
-./goforge --help
+./gocrafter --help
 ```
 
 ### 4. Adicione comandos customizados
@@ -156,7 +156,7 @@ Crie arquivos em `cmd/cli/` e registre no `wrpr.go`.
 ## 🛠️ Exemplo de uso do Logger
 
 ```go
-import gl "github.com/rafa-mori/goforge/logger"
+import gl "github.com/rafa-mori/gocrafter/logger"
 
 gl.Log("info", "Mensagem informativa")
 gl.Log("error", "Algo deu errado!")
@@ -168,7 +168,7 @@ O logger já inclui contexto (linha, arquivo, função) automaticamente!
 
 ## 🔄 Versionamento automático
 
-O arquivo `version/CLI_VERSION` é preenchido pelo CI/CD a cada release/tag. O comando `goforge version` mostra a versão atual e a última disponível no GitHub.
+O arquivo `version/CLI_VERSION` é preenchido pelo CI/CD a cada release/tag. O comando `gocrafter version` mostra a versão atual e a última disponível no GitHub.
 
 ---
 
@@ -192,7 +192,7 @@ Rafael Mori — [@faelmori](https://github.com/rafa-mori)
 
 ## 🌐 Links
 
-- [Repositório no GitHub](https://github.com/rafa-mori/goforge)
+- [Repositório no GitHub](https://github.com/rafa-mori/gocrafter)
 - [Exemplo de uso do logger](logger/logger.go)
 - [Workflows de CI/CD](.github/workflows/)
 

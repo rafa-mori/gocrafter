@@ -1,10 +1,10 @@
 package main
 
 import (
-	gl "github.com/rafa-mori/goforge/logger"
+	gl "github.com/rafa-mori/gocrafter/logger"
 )
 
-// This file is the entry point for the GoForge CLI application.
+// This file is the entry point for the GoCrafter CLI application.
 // It initializes the logger and starts the application by executing the main command.
 // It allows the application to be run as a standalone CLI tool.
 

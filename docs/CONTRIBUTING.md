@@ -1,12 +1,12 @@
-# **Contributing to GoForge**
+# **Contributing to GoCrafter**
 
-Thank you for your interest in contributing to **[GoForge](https://github.com/rafa-mori/goforge)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
+Thank you for your interest in contributing to **[GoCrafter](https://github.com/rafa-mori/gocrafter)**! We are excited to have you as part of our community. This guide will help you get started and contribute effectively to the project.
 
 ---
 
 ## **How to Contribute**
 
-There are several ways to contribute to [GoForge](https://github.com/rafa-mori/goforge):
+There are several ways to contribute to [GoCrafter](https://github.com/rafa-mori/gocrafter):
 
 1. **Report Issues**
    - Found bugs or issues in the code? Open an issue detailing the problem.
@@ -29,8 +29,8 @@ There are several ways to contribute to [GoForge](https://github.com/rafa-mori/g
 ### 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/rafa-mori/goforge.git
-cd goforge
+git clone https://github.com/rafa-mori/gocrafter.git
+cd gocrafter
 ```
 
 ### 2. **Set Up the Environment**

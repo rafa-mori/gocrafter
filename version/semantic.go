@@ -4,7 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
-	gl "github.com/rafa-mori/goforge/logger"
+	gl "github.com/rafa-mori/gocrafter/logger"
 	l "github.com/rafa-mori/logz"
 
 	"github.com/spf13/cobra"
@@ -35,8 +35,8 @@ func init() {
 	}
 }
 
-var moduleAlias = "GoForge" // Default module alias, can be overridden by environment variable
-var moduleName = "goforge"  // Default module name, can be overridden by environment variable
+var moduleAlias = "GoCrafter" // Default module alias, can be overridden by environment variable
+var moduleName = "gocrafter"  // Default module name, can be overridden by environment variable
 
 const currentVersionFallback = "v0.0.1"
 
