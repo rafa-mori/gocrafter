@@ -8,7 +8,7 @@ GoCrafter is a CLI-based project scaffolding tool designed with modularity, exte
 
 ## Project Structure
 
-```
+```plain
 gocrafter/
 ├── cmd/                        # CLI entry points
 │   ├── main.go                # Application entry point
@@ -146,7 +146,7 @@ templates/
 
 ### 1. Project Creation Flow
 
-```
+```plain
 User Input → CLI Parser → Command Router → Interactive Prompts 
     ↓
 Configuration Builder → Template Engine → File Generator → Project Output
@@ -154,7 +154,7 @@ Configuration Builder → Template Engine → File Generator → Project Output
 
 ### 2. Template Processing Flow
 
-```
+```plain
 Template Selection → Metadata Loading → Variable Collection 
     ↓
 Template Parsing → Content Generation → File System Operations

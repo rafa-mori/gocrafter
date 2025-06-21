@@ -76,7 +76,7 @@ jobs:
         run: |
           MOD_NAME=$(awk '/^module /{print $2}' go.mod | awk -F'/' '{print $NF}')
           BIN_NAME="${MOD_NAME:-"$(basename "$(realpath ./)")"}_linux_amd64"
-          go build -ldflags "-s -w -X main.version=${GITHUB_REF#refs/tags/} -X main.commit=$(git rev-parse HEAD) -X main.date=$(date +%Y-%m-%d)" -trimpath -o "${BIN_NAME:-.}" "$(dirname $(grep -risn '^package main' $(realpath ./) | head -n1 | awk -F ':' '{print $1}'))"
+          go build -ldflags "-s -w -X main.version=${GITHUB_REF#refs/tags/} -X main.commit=$(git rev-parse HEAD) -X main.date=$(date +%Y-%m-%d)" -trimpath -o "${BIN_NAME:-.}" "$(dirname $(grep -risn --exclude-dir={docs,examples,version} '^package main' $(realpath ./) | head -n1 | awk -F ':' '{print $1}'))"
 
       - name: Compress with UPX
         run: |

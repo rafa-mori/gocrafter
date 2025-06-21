@@ -25,7 +25,7 @@ import (
 	{{- if hasFeature "API Documentation"}}
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	_ "{{.ModuleName}}/docs"
+	_ "{{.ModuleName}}/api/swagger"
 	{{- end}}
 )
 
