@@ -4,7 +4,7 @@ This document outlines the future direction and planned features for GoCrafter. 
 
 ## Version 1.0.0 ✅ (Current - Released June 2025)
 
-**Core Foundation**
+### **Core Foundation**
 
 - [x] Interactive CLI wizard with survey prompts
 - [x] Template-based project generation
@@ -16,21 +16,21 @@ This document outlines the future direction and planned features for GoCrafter. 
 
 ## Version 1.1.0 🚧 (Next - Q3 2025)
 
-**Enhanced Templates**
+### **Enhanced Templates**
 
 - [ ] **GraphQL API Template** - GraphQL server with schema generation
 - [ ] **gRPC Service Template** - Pure gRPC services with protocol buffers
 - [ ] **Worker Template** - Background job processing with queues
 - [ ] **Library Template** - Go library/package with documentation
 
-**Template Improvements**
+### **Template Improvements**
 
 - [ ] **Template Validation** - Validate template structure and metadata
 - [ ] **Template Testing** - Automated testing for template generation
 - [ ] **Template Dependencies** - Template can depend on other templates
 - [ ] **Conditional Features** - More granular feature selection
 
-**CLI Enhancements**
+### **CLI Enhancements**
 
 - [ ] **Template Search** - Search templates by keywords and features
 - [ ] **Template Updates** - Update existing projects with template changes
@@ -39,21 +39,21 @@ This document outlines the future direction and planned features for GoCrafter. 
 
 ## Version 1.2.0 📋 (Q4 2025)
 
-**Advanced Features**
+### **Advanced Features**
 
 - [ ] **Custom Template Support** - Load templates from local directories
 - [ ] **Template Repository** - Remote template repositories
 - [ ] **Plugin System** - Extensible plugin architecture
 - [ ] **Template Inheritance** - Templates can extend other templates
 
-**Developer Experience**
+### **Developer Experience**
 
 - [ ] **VS Code Extension** - Visual Studio Code integration
 - [ ] **Web Interface** - Browser-based project generator
 - [ ] **Template Editor** - GUI for creating and editing templates
 - [ ] **Live Preview** - Preview projects before generation
 
-**Enterprise Features**
+### **Enterprise Features**
 
 - [ ] **Organization Templates** - Private template repositories
 - [ ] **Team Collaboration** - Shared configurations and templates
@@ -62,21 +62,21 @@ This document outlines the future direction and planned features for GoCrafter. 
 
 ## Version 2.0.0 🔮 (2026)
 
-**Cloud Integration**
+### **Cloud Integration**
 
 - [ ] **Cloud Deployment** - Deploy generated projects to cloud platforms
 - [ ] **Infrastructure as Code** - Generate Terraform/Pulumi configurations
 - [ ] **Container Orchestration** - Kubernetes manifests and Helm charts
 - [ ] **CI/CD Pipeline Generation** - Generate complete CI/CD workflows
 
-**Advanced Templating**
+### **Advanced Templating**
 
 - [ ] **Template Marketplace** - Community template sharing
 - [ ] **Template Analytics** - Usage statistics and metrics
 - [ ] **AI-Assisted Templates** - AI-powered template suggestions
 - [ ] **Interactive Template Builder** - Visual template creation tool
 
-**Ecosystem Integration**
+### **Ecosystem Integration**
 
 - [ ] **IDE Integrations** - Support for GoLand, Vim, Emacs
 - [ ] **Package Manager Integration** - Integration with Go modules and vendors
@@ -167,4 +167,7 @@ We value community input in shaping the future of GoCrafter:
 
 **Note**: This roadmap is subject to change based on community feedback, market demands, and technical considerations. Features may be moved between versions or postponed as needed.
 
-**Last Updated**: June 21, 2025
+## Stay Updated
+
+- **GitHub Repository**: [GoCrafter on GitHub](https://github.com/rafa-mori/gocrafter)
+- **Release Notes**: [Changelog](https://github.com/rafa-mori/gocrafter/releases)

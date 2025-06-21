@@ -1,6 +1,8 @@
-# 🚀 GoCrafter
+ ![GoCrafter Banner](/docs/assets/top_banner.png)
 
-**GoCrafter** is a powerful Go project scaffolding and templating tool that helps you create production-ready Go projects with best practices, modern tooling, and customizable templates.
+# **GoCrafter**
+
+## A powerful Go project scaffolding and templating tool that helps you create production-ready Go projects with best practices, modern tooling, and customizable templates
 
 [![Build](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -73,6 +75,7 @@ Next steps:
 ```
 
 **Generated project structure:**
+
 ```
 my-blog-api/
 ├── cmd/main.go              # Application entry point
@@ -96,22 +99,26 @@ my-blog-api/
 GoCrafter supports extensive configuration through interactive prompts:
 
 ### Database Support
+
 - **PostgreSQL** - Production-ready with connection pooling
 - **MySQL** - High-performance relational database
 - **MongoDB** - Document-based NoSQL database
 - **SQLite** - Embedded database for development
 
 ### Caching
+
 - **Redis** - In-memory data structure store
 - **Memcached** - High-performance caching system
 - **In-Memory** - Built-in Go cache
 
 ### Authentication
+
 - **JWT** - JSON Web Token authentication
 - **OAuth2** - Third-party authentication providers
 - **API Keys** - Simple API key authentication
 
 ### DevOps Integration
+
 - **Docker** - Containerization with multi-stage builds
 - **Kubernetes** - Production deployment manifests
 - **CI/CD** - GitHub Actions, GitLab CI, Jenkins, Azure DevOps
