@@ -21,6 +21,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	gl "github.com/rafa-mori/gocrafter/logger"
+	
 	{{- if hasFeature "API Documentation"}}
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/rafa-mori/gocrafter/internal/cli"
+	"github.com/rafa-mori/gocrafter/cmd/cli"
 	gl "github.com/rafa-mori/gocrafter/logger"
 	vs "github.com/rafa-mori/gocrafter/version"
 	"github.com/spf13/cobra"
@@ -49,12 +49,11 @@ func (m *GoCrafter) Command() *cobra.Command {
 	gl.Log("debug", "Starting GoCrafter CLI...")
 
 	var rtCmd = &cobra.Command{
-		Use:     m.Module(),
-		Aliases: []string{m.Alias()},
-		Example: m.concatenateExamples(),
-		Version: vs.GetVersion(),
-		Short:   m.ShortDescription(),
-		Long:    m.LongDescription(),
+		Use:         m.Module(),
+		Aliases:     []string{m.Alias()},
+		Example:     m.concatenateExamples(),
+		Version:     vs.GetVersion(),
+		Annotations: cli.GetDescriptions([]string{m.LongDescription(), m.ShortDescription()}, m.printBanner),
 	}
 
 	// Add GoCrafter commands
@@ -63,8 +62,11 @@ func (m *GoCrafter) Command() *cobra.Command {
 
 	// Set usage definitions for the command and its subcommands
 	setUsageDefinition(rtCmd)
+
 	for _, c := range rtCmd.Commands() {
+
 		setUsageDefinition(c)
+
 		if !strings.Contains(strings.Join(os.Args, " "), c.Use) {
 			if c.Short == "" {
 				c.Short = c.Annotations["description"]

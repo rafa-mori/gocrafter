@@ -21,6 +21,7 @@ func ListCommand() *cobra.Command {
 
   # List templates (alias)
   gocrafter templates`,
+		Annotations: GetDescriptions([]string{"List available project templates", "List all available project templates with their descriptions."}, false),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return runListCommand()
 		},
@@ -120,7 +121,8 @@ func InfoCommand() *cobra.Command {
 
   # Show info about cli-tool template
   gocrafter info cli-tool`,
-		Args: cobra.ExactArgs(1),
+		Args:        cobra.ExactArgs(1),
+		Annotations: GetDescriptions([]string{"Show detailed information about a template", "Show detailed information about a specific template including its structure and features."}, false),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return runInfoCommand(args[0])
 		},
