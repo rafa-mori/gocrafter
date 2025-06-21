@@ -1,4 +1,4 @@
- ![GoCrafter Banner](/docs/assets/top_banner.png)
+ ![GoCrafter Banner](docs/assets/top_banner.png)
 
 # **GoCrafter**
 
