@@ -1,7 +1,7 @@
 package main
 
 import (
-	cc "github.com/rafa-mori/gocrafter/cmd/cli"
+	"github.com/rafa-mori/gocrafter/internal/cli"
 	gl "github.com/rafa-mori/gocrafter/logger"
 	vs "github.com/rafa-mori/gocrafter/version"
 	"github.com/spf13/cobra"
@@ -16,27 +16,31 @@ type GoCrafter struct {
 }
 
 func (m *GoCrafter) Alias() string {
-	return ""
+	return "craft"
 }
 func (m *GoCrafter) ShortDescription() string {
-	return "GoCrafter is a minimalistic backend service with Go."
+	return "GoCrafter is a Go project scaffolding and templating tool."
 }
 func (m *GoCrafter) LongDescription() string {
-	return `GoCrafter: A minimalistic backend service with Go.`
+	return `GoCrafter: A Go project scaffolding and templating tool.
+Create production-ready Go projects with best practices, modern tooling, and customizable templates.`
 }
 func (m *GoCrafter) Usage() string {
-	return "article [command] [args]"
+	return "gocrafter [command] [args]"
 }
 func (m *GoCrafter) Examples() []string {
-	return []string{"article some-command",
-		"article another-command --option value",
-		"article yet-another-command --flag"}
+	return []string{
+		"gocrafter new                    # Interactive project creation",
+		"gocrafter new --template api-rest # Quick API project",
+		"gocrafter list                   # Show available templates",
+		"gocrafter info api-rest          # Show template details",
+	}
 }
 func (m *GoCrafter) Active() bool {
 	return true
 }
 func (m *GoCrafter) Module() string {
-	return "article"
+	return "gocrafter"
 }
 func (m *GoCrafter) Execute() error {
 	return m.Command().Execute()
@@ -49,13 +53,12 @@ func (m *GoCrafter) Command() *cobra.Command {
 		Aliases: []string{m.Alias()},
 		Example: m.concatenateExamples(),
 		Version: vs.GetVersion(),
-		Annotations: cc.GetDescriptions([]string{
-			m.LongDescription(),
-			m.ShortDescription(),
-		}, m.printBanner),
+		Short:   m.ShortDescription(),
+		Long:    m.LongDescription(),
 	}
 
-	rtCmd.AddCommand(cc.ServiceCmdList()...)
+	// Add GoCrafter commands
+	rtCmd.AddCommand(cli.GetCommands()...)
 	rtCmd.AddCommand(vs.CliCommand())
 
 	// Set usage definitions for the command and its subcommands
@@ -86,7 +89,7 @@ func (m *GoCrafter) concatenateExamples() string {
 	return examples
 }
 func RegX() *GoCrafter {
-	var printBannerV = os.Getenv("GOFORGE_PRINT_BANNER")
+	var printBannerV = os.Getenv("GOCRAFTER_PRINT_BANNER")
 	if printBannerV == "" {
 		printBannerV = "true"
 	}

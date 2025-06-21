@@ -1,0 +1,69 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug GoCrafter",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "program": "${workspaceFolder}",
+      "args": [
+        "--help"
+      ],
+      "env": {},
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug GoCrafter - New Project",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "program": "${workspaceFolder}",
+      "args": [
+        "new",
+        "test-project",
+        "--template",
+        "api-rest",
+        "--quick"
+      ],
+      "env": {},
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug GoCrafter - List Templates",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "program": "${workspaceFolder}",
+      "args": [
+        "list"
+      ],
+      "env": {},
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug GoCrafter - Template Info",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "program": "${workspaceFolder}",
+      "args": [
+        "info",
+        "api-rest"
+      ],
+      "env": {},
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Test Current Package",
+      "type": "go",
+      "request": "launch",
+      "mode": "test",
+      "program": "${workspaceFolder}",
+      "args": [
+        "-test.v"
+      ],
+      "buildFlags": "-race"
+    }
+  ]
+}

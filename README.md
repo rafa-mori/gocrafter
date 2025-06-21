@@ -1,207 +1,215 @@
-![GoCrafter](docs/assets/top_banner_m_a.png)
+# 🚀 GoCrafter
 
-
+**GoCrafter** is a powerful Go project scaffolding and templating tool that helps you create production-ready Go projects with best practices, modern tooling, and customizable templates.
 
 [![Build](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Go Version](https://img.shields.io/badge/go-%3E=1.20-blue)](go.mod)
-[![Releases](https://img.shields.io/github/v/release/faelmori/gocrafter?include_prereleases)](https://github.com/rafa-mori/gocrafter/releases)
+[![Go Version](https://img.shields.io/badge/go-%3E=1.21-blue)](go.mod)
+[![Releases](https://img.shields.io/github/v/release/rafa-mori/gocrafter?include_prereleases)](https://github.com/rafa-mori/gocrafter/releases)
 
 ---
 
-[🇧🇷 Read this documentation in Portuguese](docs/README.pt-BR.md)
+## ✨ Features
 
-If you’re tired of manual builds, complicated deploys, confusing versioning, and want a stylish, easy-to-extend, production-ready CLI, **GoCrafter** is for you!
+- 🎯 **Interactive Project Creation** - Guided wizard for project setup
+- 📦 **Multiple Templates** - API REST, CLI tools, microservices, gRPC services, and more
+- ⚙️ **Smart Configuration** - Database, cache, authentication, and DevOps integration
+- 🛠️ **Modern Tooling** - Docker, Kubernetes, CI/CD, Swagger documentation
+- 🎨 **Customizable** - Extend with your own templates
+- 🚀 **Production Ready** - Best practices and professional structure
 
----
+## 🏃‍♂️ Quick Start
 
-## 🌟 Advanced Examples
+### Installation
 
-### 1. Extending the CLI with a new command
+```bash
+# Using Go install
+go install github.com/rafa-mori/gocrafter@latest
 
-Create a new file at `cmd/cli/hello.go`:
-
-```go
-package cli
-
-import (
-    "fmt"
-    "github.com/spf13/cobra"
-)
-
-var HelloCmd = &cobra.Command{
-    Use:   "hello",
-    Short: "Custom command example",
-    Run: func(cmd *cobra.Command, args []string) {
-        fmt.Println("Hello, world! Custom command working!")
-    },
-}
+# Or download from releases
+curl -sSL https://github.com/rafa-mori/gocrafter/releases/latest/download/gocrafter-linux-amd64.tar.gz | tar xz
 ```
 
-In `wrpr.go`, register the command:
+### Create Your First Project
 
-```go
-// ...existing code...
-rootCmd.AddCommand(cli.HelloCmd)
-// ...existing code...
+```bash
+# Interactive mode (recommended for first time)
+gocrafter new
+
+# Quick mode
+gocrafter new my-api --template api-rest
+
+# List available templates
+gocrafter list
+
+# Get template details
+gocrafter info api-rest
 ```
 
----
+## 📦 Available Templates
 
-### 2. Advanced logger with extra context
+| Template | Description | Features |
+|----------|-------------|----------|
+| **api-rest** | REST API server | Gin framework, middleware, health checks, Swagger |
+| **cli-tool** | Command-line application | Cobra framework, subcommands, configuration |
+| **microservice** | Microservice architecture | gRPC + HTTP, service discovery, metrics |
+| **grpc-service** | Pure gRPC service | Protocol buffers, streaming, service mesh ready |
+| **worker** | Background job processor | Queue integration, retry mechanisms, monitoring |
+| **library** | Go library/package | Documentation, testing, CI/CD workflows |
 
-```go
-import gl "github.com/rafa-mori/gocrafter/logger"
+## 🎯 Example: Creating a REST API
 
-func exampleWithContext() {
-    gl.Log("warn", "Warning! Something might be wrong.")
-    gl.Log("debug", map[string]interface{}{
-        "user": "rafael",
-        "action": "login",
-        "success": true,
-    })
-}
+```bash
+$ gocrafter new my-blog-api --template api-rest
+🚀 Starting project generation...
+✅ Project generated successfully!
+📁 Location: my-blog-api
+
+Next steps:
+  cd my-blog-api
+  make run    # Start the application
+  make test   # Run tests
+  make build  # Build the application
 ```
 
----
-
-### 3. Using as a Go library
-
-```go
-import "github.com/rafa-mori/gocrafter"
-
-func main() {
-    var myModule gocrafter.GoCrafter = &MyModule{}
-    if myModule.Active() {
-        _ = myModule.Execute()
-    }
-}
-
-// Implement the GoCrafter interface in your module
+**Generated project structure:**
+```
+my-blog-api/
+├── cmd/main.go              # Application entry point
+├── internal/
+│   ├── config/             # Configuration management
+│   ├── handler/            # HTTP handlers
+│   ├── middleware/         # HTTP middleware
+│   ├── model/              # Data models
+│   ├── repository/         # Data access layer
+│   └── service/            # Business logic
+├── pkg/                    # Public packages
+├── Makefile               # Build automation
+├── Dockerfile             # Container configuration
+├── docker-compose.yml     # Development environment
+├── .env.example           # Environment template
+└── README.md              # Project documentation
 ```
 
----
+## ⚙️ Configuration Options
 
-## ✨ What is GoCrafter?
+GoCrafter supports extensive configuration through interactive prompts:
 
-GoCrafter is a template/base project for any modern Go module. It delivers:
+### Database Support
+- **PostgreSQL** - Production-ready with connection pooling
+- **MySQL** - High-performance relational database
+- **MongoDB** - Document-based NoSQL database
+- **SQLite** - Embedded database for development
 
-- **Multi-platform build** (Linux, macOS, Windows) with no code changes
-- **Automatic UPX compression** for optimized binaries
-- **Automatic publishing** to GitHub Releases
-- **Unified dependency management**
-- **Automatic checksum** to ensure binary integrity
-- **Custom, stylish CLI** (cobra), ready to extend
-- **Flexible architecture**: use as a library or executable
-- **Automatic versioning**: CI/CD fills and embeds the version in the binary
-- **Structured logger**: contextual, colored logging with levels and line tracing
+### Caching
+- **Redis** - In-memory data structure store
+- **Memcached** - High-performance caching system
+- **In-Memory** - Built-in Go cache
 
-All this without changing your module’s code. The workflow is modular, dynamic, and adapts to any environment!
+### Authentication
+- **JWT** - JSON Web Token authentication
+- **OAuth2** - Third-party authentication providers
+- **API Keys** - Simple API key authentication
 
----
+### DevOps Integration
+- **Docker** - Containerization with multi-stage builds
+- **Kubernetes** - Production deployment manifests
+- **CI/CD** - GitHub Actions, GitLab CI, Jenkins, Azure DevOps
 
-## 🏗️ Project Structure
+## 🛠️ Advanced Usage
 
-```plain text
-./
-├── .github/workflows/      # CI/CD workflows (release, checksum)
-├── article.go              # GoCrafter interface for library use
-├── cmd/                    # CLI entrypoint and commands
-│   ├── cli/                # Utilities and example commands
-│   ├── main.go             # CLI application main
-│   ├── usage.go            # Custom usage template
-│   └── wrpr.go             # Command structure and registration
-├── go.mod                  # Go dependencies
-├── logger/                 # Global structured logger
-│   └── logger.go           # Contextual, colored logger
-├── Makefile                # Entrypoint for build, test, lint, etc.
-├── support/                # Helper scripts for build/install
-├── version/                # Automatic versioning
-│   ├── CLI_VERSION         # Filled by CI/CD
-│   └── semantic.go         # Semantic versioning utilities
+### Interactive Mode
+
+```bash
+$ gocrafter new
+🚀 Welcome to GoCrafter - Go Project Generator!
+Let's craft your perfect Go project together...
+
+? What's your project name? my-awesome-api
+? What's your Go module name? github.com/username/my-awesome-api
+? What type of project do you want to create? api-rest - REST API with HTTP server
+? Which database do you want to use? postgres
+? Do you want to add a cache layer? redis
+? Which additional features do you want to include? [Use arrows to move, space to select]
+  ◯ Authentication (JWT)
+  ◉ API Documentation (Swagger)
+  ◉ Health Checks
+  ◉ Metrics (Prometheus)
+  ◯ Distributed Tracing
 ```
 
----
+### Quick Mode
 
-## 💡 Why use it?
+```bash
+# Create API with specific features
+gocrafter new blog-api \
+  --template api-rest \
+  --output ./projects \
+  --config api-config.json
 
-- **No headaches** with builds and deploys
-- **Production-ready CLI** that’s easy to customize
-- **Powerful logger**: debug, info, warn, error, success, all with context
-- **Automatic versioning**: never forget to update your version again
-- **Easy to extend**: add commands, use as a library, plug into other projects
+# Create CLI tool
+gocrafter new my-cli \
+  --template cli-tool \
+  --quick
 
----
-
-## 🚀 Getting Started
-
-### 1. Install dependencies
-
-```sh
-make install
+# Create microservice
+gocrafter new user-service \
+  --template microservice
 ```
 
-### 2. Build the project
+### Template Information
 
-```sh
-make build
+```bash
+# List all templates with descriptions
+gocrafter list
+
+# Get detailed template information
+gocrafter info api-rest
+
+# Show template structure
+gocrafter info microservice --show-structure
 ```
 
-### 3. Run the CLI
+## 📚 Documentation
 
-```sh
-./gocrafter --help
-```
+- 📖 [**User Guide**](docs/user-guide.md) - Complete usage documentation
+- 🛠️ [**Template Development**](docs/template-development.md) - Create custom templates
+- 🏗️ [**Architecture**](docs/architecture.md) - How GoCrafter works
+- 🎯 [**Examples**](docs/examples/) - Project examples and tutorials
+- 🤝 [**Contributing**](docs/CONTRIBUTING.md) - How to contribute
 
-### 4. Add custom commands
+## 🌍 Language Support
 
-Create files in `cmd/cli/` and register them in `wrpr.go`.
+- [🇺🇸 English](README.md)
+- [🇧🇷 Português](docs/README.pt-BR.md)
 
----
+## 🤝 Contributing
 
-## 🛠️ Logger usage example
+We welcome contributions! Please see our [Contributing Guide](docs/CONTRIBUTING.md) for details.
 
-```go
-import gl "github.com/rafa-mori/gocrafter/logger"
-
-gl.Log("info", "Informative message")
-gl.Log("error", "Something went wrong!")
-```
-
-The logger automatically includes context (line, file, function)!
-
----
-
-## 🔄 Automatic versioning
-
-The `version/CLI_VERSION` file is filled by CI/CD on every release/tag. The `gocrafter version` command shows the current and latest version from GitHub.
-
----
-
-## 🤝 Contribute
-
-Pull requests, issues, and suggestions are very welcome. Let’s evolve together!
-
----
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📄 License
 
-MIT. See the LICENSE file.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Cobra](https://github.com/spf13/cobra) - CLI framework
+- [Survey](https://github.com/AlecAivazis/survey) - Interactive prompts
+- [Gin](https://github.com/gin-gonic/gin) - HTTP web framework
+- [Logrus](https://github.com/sirupsen/logrus) - Structured logging
 
 ---
 
-## 👤 Author
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/rafa-mori">@rafa-mori</a>
+</p>
 
-Rafael Mori — [@faelmori](https://github.com/rafa-mori)
-
----
-
-## 🌐 Links
-
-- [GitHub Repository](https://github.com/rafa-mori/gocrafter)
-- [Logger usage example](logger/logger.go)
-- [CI/CD Workflows](.github/workflows/)
-
----
-
-> Made with 💙 for the Go community. Let’s automate everything!
+<p align="center">
+  <a href="https://github.com/rafa-mori/gocrafter">⭐ Give us a star if you find GoCrafter useful!</a>
+</p>

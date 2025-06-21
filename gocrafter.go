@@ -1,10 +1,10 @@
-package article
+package gocrafter
 
 import "github.com/spf13/cobra"
 
-// This file/package allows the article module to be used as a library.
-// It defines the GoCrafter interface which can be implemented by any module
-// that wants to be part of the article ecosystem.
+// GoCrafter is a Go project scaffolding and templating tool.
+// It provides a structured way to generate Go projects with best practices,
+// modern tooling, and customizable templates.
 
 type GoCrafter interface {
 	// Alias returns the alias for the command.

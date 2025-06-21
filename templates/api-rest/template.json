@@ -1,0 +1,19 @@
+{
+  "name": "api-rest",
+  "description": "REST API server with HTTP endpoints and modern Go practices",
+  "version": "1.0.0",
+  "author": "GoCrafter Team",
+  "tags": ["api", "rest", "http", "server", "web"],
+  "features": [
+    "HTTP server with Gin framework",
+    "Structured logging",
+    "Environment configuration",
+    "Database integration ready",
+    "Middleware support",
+    "Health check endpoints",
+    "Graceful shutdown",
+    "Docker support",
+    "Makefile for common tasks",
+    "CI/CD workflows"
+  ]
+}
