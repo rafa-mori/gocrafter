@@ -6,7 +6,7 @@ run:
   #   - testdata
   #   - templates
 
-linters-settings:
+linters:
   govet:
     check-shadowing: true
     settings:
