@@ -7,6 +7,7 @@ require (
 	github.com/fatih/color v1.18.0
 	github.com/rafa-mori/logz v1.3.0
 	github.com/spf13/cobra v1.9.1
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
@@ -30,5 +31,4 @@ require (
 	golang.org/x/sys v0.33.0 // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	golang.org/x/text v0.25.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

@@ -10,5 +10,6 @@ func GetCommands() []*cobra.Command {
 		NewCommand(),
 		ListCommand(),
 		InfoCommand(),
+		KitCommand(),
 	}
 }

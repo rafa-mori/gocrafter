@@ -1,0 +1,22 @@
+name: "golang-basic-api"
+description: "Basic Go REST API with Gin framework"
+language: "go"
+version: "1.0.0"
+author: "GoCrafter Team"
+repository: ""
+dependencies:
+  - "go"
+  - "make"
+  - "docker"
+placeholders:
+  - "project_name"
+  - "author"
+  - "license"
+  - "description"
+  - "port"
+  - "go_version"
+tags:
+  - "api"
+  - "rest"
+  - "gin"
+  - "go"

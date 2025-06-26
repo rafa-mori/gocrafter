@@ -2,7 +2,7 @@
 
 # **GoCrafter**
 
-## A powerful Go project scaffolding and templating tool that helps you create production-ready Go projects with best practices, modern tooling, and customizable templates
+## A powerful Go project scaffolding and templating tool with pluggable kits that helps you create production-ready Go projects with best practices, modern tooling, and customizable templates
 
 [![Build](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml/badge.svg)](https://github.com/rafa-mori/gocrafter/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -14,10 +14,12 @@
 ## ✨ Features
 
 - 🎯 **Interactive Project Creation** - Guided wizard for project setup
-- 📦 **Multiple Templates** - API REST, CLI tools, microservices, gRPC services, and more
+- 📦 **Multiple Templates** - Built-in templates for API REST, CLI tools, microservices, gRPC services, and more
+- 🧩 **Pluggable Kits** - Install and use external project kits from repositories
+- 🔧 **Smart Placeholders** - Advanced placeholder system with template functions
 - ⚙️ **Smart Configuration** - Database, cache, authentication, and DevOps integration
 - 🛠️ **Modern Tooling** - Docker, Kubernetes, CI/CD, Swagger documentation
-- 🎨 **Customizable** - Extend with your own templates
+- 🎨 **Extensible** - Create and share your own kits
 - 🚀 **Production Ready** - Best practices and professional structure
 
 ## 🏃‍♂️ Quick Start
@@ -34,11 +36,13 @@ curl -sSL https://github.com/rafa-mori/gocrafter/releases/latest/download/gocraf
 
 ### Create Your First Project
 
+#### Using Built-in Templates
+
 ```bash
 # Interactive mode (recommended for first time)
 gocrafter new
 
-# Quick mode
+# Quick mode with template
 gocrafter new my-api --template api-rest
 
 # List available templates
@@ -46,6 +50,22 @@ gocrafter list
 
 # Get template details
 gocrafter info api-rest
+```
+
+#### Using Kits
+
+```bash
+# Add a kit from repository
+gocrafter kit add https://github.com/user/golang-api-kit
+
+# List installed kits
+gocrafter kit list
+
+# Create project from kit
+gocrafter new my-project --kit golang-api-kit --author "Your Name"
+
+# Get kit information
+gocrafter kit info golang-api-kit
 ```
 
 ## 📦 Available Templates
