@@ -61,5 +61,6 @@ testdata/output/
 temp/
 .tmp/
 .venv/
-goforge_linux_amd64
-goforge_linux_amd64.tar.gz
+*_linux_amd64*
+*_linux_amd64.tar.gz
+docs/jobs/*.md
