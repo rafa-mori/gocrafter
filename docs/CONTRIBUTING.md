@@ -54,7 +54,7 @@ Quick Go installation (optional):
 
 ```bash
 # Using go-installer (easy way)
-curl -sSfL 'https://raw.githubusercontent.com/faelmori/go-installer/refs/heads/main/go.sh' | bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/rafa-mori/gosetup/main/install.sh)"
 ```
 
 ### Setting Up Your Development Environment
@@ -63,7 +63,7 @@ curl -sSfL 'https://raw.githubusercontent.com/faelmori/go-installer/refs/heads/m
 
    ```bash
    # Fork the repository on GitHub first
-   git clone https://github.com/YOUR_USERNAME/gocrafter.git
+   git clone https://github.com/rafa-mori/gocrafter.git
    cd gocrafter
    
    # Add upstream remote
